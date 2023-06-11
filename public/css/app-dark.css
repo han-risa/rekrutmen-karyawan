@@ -440,9 +440,6 @@ body.theme-dark ::-webkit-search-decoration {
 body.theme-dark ::-webkit-color-swatch-wrapper {
   padding: 0;
 }
-body.theme-dark ::-webkit-file-upload-button {
-  font: inherit;
-}
 body.theme-dark ::file-selector-button {
   font: inherit;
 }
@@ -1910,22 +1907,6 @@ body.theme-dark .form-control:disabled, body.theme-dark .form-control[readonly] 
   background-color: #40404d;
   opacity: 1;
 }
-body.theme-dark .form-control::-webkit-file-upload-button {
-  padding: 0.375rem 0.75rem;
-  margin: -0.375rem -0.75rem;
-  -webkit-margin-end: 0.75rem;
-          margin-inline-end: 0.75rem;
-  color: #607080;
-  background-color: #e6eef5;
-  pointer-events: none;
-  border-color: inherit;
-  border-style: solid;
-  border-width: 0;
-  border-inline-end-width: 1px;
-  border-radius: 0;
-  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
 body.theme-dark .form-control::file-selector-button {
   padding: 0.375rem 0.75rem;
   margin: -0.375rem -0.75rem;
@@ -1942,16 +1923,9 @@ body.theme-dark .form-control::file-selector-button {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
-  body.theme-dark .form-control::-webkit-file-upload-button {
-    -webkit-transition: none;
-    transition: none;
-  }
   body.theme-dark .form-control::file-selector-button {
     transition: none;
   }
-}
-body.theme-dark .form-control:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
-  background-color: #dbe2e9;
 }
 body.theme-dark .form-control:hover:not(:disabled):not([readonly])::file-selector-button {
   background-color: #dbe2e9;
@@ -2002,12 +1976,6 @@ body.theme-dark .form-control-sm {
   font-size: 0.875rem;
   border-radius: 0.2rem;
 }
-body.theme-dark .form-control-sm::-webkit-file-upload-button {
-  padding: 0.25rem 0.5rem;
-  margin: -0.25rem -0.5rem;
-  -webkit-margin-end: 0.5rem;
-          margin-inline-end: 0.5rem;
-}
 body.theme-dark .form-control-sm::file-selector-button {
   padding: 0.25rem 0.5rem;
   margin: -0.25rem -0.5rem;
@@ -2025,12 +1993,6 @@ body.theme-dark .form-control-lg {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   border-radius: 0.3rem;
-}
-body.theme-dark .form-control-lg::-webkit-file-upload-button {
-  padding: 0.5rem 1rem;
-  margin: -0.5rem -1rem;
-  -webkit-margin-end: 1rem;
-          margin-inline-end: 1rem;
 }
 body.theme-dark .form-control-lg::file-selector-button {
   padding: 0.5rem 1rem;
@@ -4518,11 +4480,6 @@ body.theme-dark .alert-dark {
 body.theme-dark .alert-dark .alert-link {
   color: #101214;
 }
-@-webkit-keyframes progress-bar-stripes {
-  0% {
-    background-position-x: 1rem;
-  }
-}
 @keyframes progress-bar-stripes {
   0% {
     background-position-x: 1rem;
@@ -4557,13 +4514,11 @@ body.theme-dark .progress-bar-striped {
   background-size: 1rem 1rem;
 }
 body.theme-dark .progress-bar-animated {
-  -webkit-animation: 1s linear infinite progress-bar-stripes;
-          animation: 1s linear infinite progress-bar-stripes;
+  animation: 1s linear infinite progress-bar-stripes;
 }
 @media (prefers-reduced-motion: reduce) {
   body.theme-dark .progress-bar-animated {
-    -webkit-animation: none;
-            animation: none;
+    animation: none;
   }
 }
 body.theme-dark .list-group {
@@ -4935,7 +4890,6 @@ body.theme-dark .toast:not(.show) {
   display: none;
 }
 body.theme-dark .toast-container {
-  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   max-width: 100%;
@@ -5471,8 +5425,7 @@ body.theme-dark .carousel-item {
   float: left;
   width: 100%;
   margin-right: -100%;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   transition: transform 0.6s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -5629,11 +5582,6 @@ body.theme-dark .carousel-dark .carousel-indicators [data-bs-target] {
 body.theme-dark .carousel-dark .carousel-caption {
   color: #000;
 }
-@-webkit-keyframes spinner-border {
-  to {
-    transform: rotate(360deg) /* rtl:ignore */;
-  }
-}
 @keyframes spinner-border {
   to {
     transform: rotate(360deg) /* rtl:ignore */;
@@ -5647,22 +5595,12 @@ body.theme-dark .spinner-border {
   border: 0.25em solid currentColor;
   border-right-color: transparent;
   border-radius: 50%;
-  -webkit-animation: 0.75s linear infinite spinner-border;
-          animation: 0.75s linear infinite spinner-border;
+  animation: 0.75s linear infinite spinner-border;
 }
 body.theme-dark .spinner-border-sm {
   width: 1rem;
   height: 1rem;
   border-width: 0.2em;
-}
-@-webkit-keyframes spinner-grow {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    opacity: 1;
-    transform: none;
-  }
 }
 @keyframes spinner-grow {
   0% {
@@ -5681,8 +5619,7 @@ body.theme-dark .spinner-grow {
   background-color: currentColor;
   border-radius: 50%;
   opacity: 0;
-  -webkit-animation: 0.75s linear infinite spinner-grow;
-          animation: 0.75s linear infinite spinner-grow;
+  animation: 0.75s linear infinite spinner-grow;
 }
 body.theme-dark .spinner-grow-sm {
   width: 1rem;
@@ -5691,8 +5628,7 @@ body.theme-dark .spinner-grow-sm {
 @media (prefers-reduced-motion: reduce) {
   body.theme-dark .spinner-border,
 body.theme-dark .spinner-grow {
-    -webkit-animation-duration: 1.5s;
-            animation-duration: 1.5s;
+    animation-duration: 1.5s;
   }
 }
 body.theme-dark .offcanvas {
@@ -5805,13 +5741,7 @@ body.theme-dark .placeholder-lg {
   min-height: 1.2em;
 }
 body.theme-dark .placeholder-glow .placeholder {
-  -webkit-animation: placeholder-glow 2s ease-in-out infinite;
-          animation: placeholder-glow 2s ease-in-out infinite;
-}
-@-webkit-keyframes placeholder-glow {
-  50% {
-    opacity: 0.2;
-  }
+  animation: placeholder-glow 2s ease-in-out infinite;
 }
 @keyframes placeholder-glow {
   50% {
@@ -5823,14 +5753,7 @@ body.theme-dark .placeholder-wave {
           mask-image: linear-gradient(130deg, #000 55%, rgba(0, 0, 0, 0.8) 75%, #000 95%);
   -webkit-mask-size: 200% 100%;
           mask-size: 200% 100%;
-  -webkit-animation: placeholder-wave 2s linear infinite;
-          animation: placeholder-wave 2s linear infinite;
-}
-@-webkit-keyframes placeholder-wave {
-  100% {
-    -webkit-mask-position: -200% 0%;
-            mask-position: -200% 0%;
-  }
+  animation: placeholder-wave 2s linear infinite;
 }
 @keyframes placeholder-wave {
   100% {

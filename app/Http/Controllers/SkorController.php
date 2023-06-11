@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Skor;
-use App\Http\Requests\StoreSkorRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\UpdateSkorRequest;
 
 class SkorController extends Controller
 {
@@ -17,7 +15,9 @@ class SkorController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.skor',[
+            'item' => DB::table('kandidats')->paginate(10),
+       ]);
     }
 
     /**
@@ -27,27 +27,38 @@ class SkorController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.create_kandidat');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSkorRequest  $request
+     * @param  \App\Http\Requests\StoreKandidatRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSkorRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validatedData=$request->validate([
+            'komunikasi' => 'required',
+            'kerjasama' => 'required',
+            'kejujuran' => 'required',
+            'interpersonal' => 'required',
+        ]);
+
+
+        Kandidat::create($validatedData); //untuk menyimpan data
+
+        // toast('Registration has been successful','success');
+        return redirect()->intended('/skor');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Skor  $skor
+     * @param  \App\Models\Kandidat  $kandidat
      * @return \Illuminate\Http\Response
      */
-    public function show(Skor $skor)
+    public function show(Skor $kandidat)
     {
         //
     }
@@ -55,56 +66,59 @@ class SkorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Skor  $skor
+     * @param  \App\Models\Kandidat  $kandidat
      * @return \Illuminate\Http\Response
      */
-    public function edit(Skor $skor)
+    public function edit($id)
     {
-        //
+        return view("pages.edit_skor",[
+             'title' => 'User - Edit Kandidat',
+             'item' => Skor::find($id),
+         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSkorRequest  $request
-     * @param  \App\Models\Skor  $skor
+     * @param  \App\Http\Requests\UpdateKandidatRequest  $request
+     * @param  \App\Models\Kandidat  $kandidat
      * @return \Illuminate\Http\Response
      */
-    // Simpan Hasil Edit
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $validatedData=$request->validate([
-            'namaLengkap' => 'required',
-            'username' => 'required|min:5',
-            'alamat' => 'required|min:5',
-            'noHp' => 'required',
+            'nama' => 'required',
             'jenisKelamin' => 'required',
-            'tempatLahir' => 'required',
-            'tanggalLahir' => 'required',
+            'alamat' => 'required|min:5',
+            'email' => 'required',
+            'noHp' => 'required',
+            'komunikasi' => 'required',
+            'kerjasama' => 'required',
+            'kejujuran' => 'required',
+            'interpersonal' => 'required',
         ]);
 
-        // Menyimpan update
-        $user = Dokter::find($id);
-        $user->namaLengkap = $request->namaLengkap;
-        $user->username = $request->username;
-        $user->alamat = $request->alamat;
-        $user->noHp = $request->noHp;
-        $user->jenisKelamin = $request->jenisKelamin;
-        $user->tempatLahir = $request->tempatLahir;
-        $user->tanggalLahir = $request->tanggalLahir;
+        $user = Skor::find($id);
+        $user->komunikasi = $request->komunikasi;
+        $user->kerjasama = $request->kerjasama;
+        $user->kejujuran = $request->kejujuran;
+        $user->interpersonal = $request->interpersonal;
         $user->save();
 
-        // toast('Your data has been saved!','success');
-        return redirect("/dokter"); // untuk diarahkan kemana
+        return redirect()->intended('/skor');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Skor  $skor
+     * @param  \App\Models\Kandidat  $kandidat
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Skor $skor)
+    public function destroy($id)
     {
-        //
+        Kandidat::destroy($id);
+         // Session::flash('hapussuccess', 'Data berhasil dihapus!');
+         // toast('Your data has been deleted!','success');
+         return redirect("/skor"); // untuk diarahkan kemana
     }
 }

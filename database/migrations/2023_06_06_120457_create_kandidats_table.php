@@ -21,6 +21,10 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('email');
             $table->string('noHp');
+            $table->integer('komunikasi');
+            $table->integer('kerjasama');
+            $table->integer('kejujuran');
+            $table->integer('interpersonal');
         });
     }
 

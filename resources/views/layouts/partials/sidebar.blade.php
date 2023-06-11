@@ -7,6 +7,7 @@
         <x-maz-sidebar-sub-item name="Accordion" :link="route('components.accordion')"></x-maz-sidebar-sub-item>
         <x-maz-sidebar-sub-item name="Alert" :link="route('components.alert')"></x-maz-sidebar-sub-item>
     </x-maz-sidebar-item>
-    <x-maz-sidebar-item name="Kandidat" icon="bi bi-people-fill" :link="route('kandidat')"></x-maz-sidebar-item>
+    <x-maz-sidebar-item name="Kandidat" icon="bi bi-people-fill" :link="route('pages.kandidat')"></x-maz-sidebar-item>
+    <x-maz-sidebar-item name="Skor" icon="bi bi-clipboard-check-fill" :link="route('pages.skor')"></x-maz-sidebar-item>
 
 </x-maz-sidebar>

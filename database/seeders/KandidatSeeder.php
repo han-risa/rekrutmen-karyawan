@@ -24,10 +24,14 @@ class KandidatSeeder extends Seeder
     	      // insert data ke table pegawai menggunakan Faker
     		DB::table('kandidats')->insert([
     			'nama' => $faker->name,
-                'jenisKelamin' => $gender,
+                'jenisKelamin' => $faker->randomElement(['Laki-laki', 'Perempuan']),
                 'alamat' => $faker->address,
                 'noHp' => $faker->phoneNumber,
                 'email' => $faker->unique()->safeEmail,
+                'komunikasi' => $faker->numberBetween(0,40),
+    			'kerjasama' => $faker->numberBetween(0,40),
+    			'kejujuran' => $faker->numberBetween(0,40),
+    			'interpersonal' => $faker->numberBetween(0,40),
                 'created_at' => $faker->date('Y-m-d', 'now')
     		]);
         }
