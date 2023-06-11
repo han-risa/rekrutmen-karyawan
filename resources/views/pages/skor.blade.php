@@ -75,8 +75,3 @@
     </section>
     <!-- Striped rows end -->
 </x-app-layout>
-<link rel="stylesheet" href="assets/extensions/simple-datatables/style.css">
-<link rel="stylesheet" href="assets/scss/pages/simple-datatables.scss">
-
-<script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
-<script src="assets/static/js/pages/simple-datatables.js"></script>

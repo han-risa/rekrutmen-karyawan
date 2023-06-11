@@ -46,7 +46,7 @@
                                 <tbody>
                                     @foreach ($item as $i)
                                     <tr>
-                                        <td class="text-bold-500">{{ $i->nama }}</td>
+                                        <td>{{ $i->nama }}</td>
                                         <td>{{ $i->jenisKelamin }}</td>
                                         <td>{{ $i->alamat }}</td>
                                         <td>{{ $i->email }}</td>
@@ -75,3 +75,4 @@
     </section>
     <!-- Striped rows end -->
 </x-app-layout>
+
