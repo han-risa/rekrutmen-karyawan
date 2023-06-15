@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Skor;
+use App\Models\Kandidat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -13,11 +13,14 @@ class SkorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('pages.skor',[
-            'item' => DB::table('kandidats')->paginate(10),
-       ]);
+        if ($request->has('search')) {
+            $item = Kandidat::where('nama', 'LIKE', '%' .$request->search. '%')->paginate(5);
+        } else {
+            $item = Kandidat::paginate(5);
+        }
+        return view('pages.skor', compact('item'));
     }
 
     /**
@@ -73,7 +76,7 @@ class SkorController extends Controller
     {
         return view("pages.edit_skor",[
              'title' => 'User - Edit Kandidat',
-             'item' => Skor::find($id),
+             'item' => Kandidat::find($id),
          ]);
     }
 
@@ -87,18 +90,13 @@ class SkorController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData=$request->validate([
-            'nama' => 'required',
-            'jenisKelamin' => 'required',
-            'alamat' => 'required|min:5',
-            'email' => 'required',
-            'noHp' => 'required',
             'komunikasi' => 'required',
             'kerjasama' => 'required',
             'kejujuran' => 'required',
             'interpersonal' => 'required',
         ]);
 
-        $user = Skor::find($id);
+        $user = Kandidat::find($id);
         $user->komunikasi = $request->komunikasi;
         $user->kerjasama = $request->kerjasama;
         $user->kejujuran = $request->kejujuran;

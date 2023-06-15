@@ -9,14 +9,14 @@ class Skor extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama',
-        'jenisKelamin',
-        'alamat',
-        'email',
-        'noHp',
         'komunikasi',
         'kerjasama',
         'kejujuran',
         'interpersonal'
     ];
+
+    public function kandidats()
+    {
+        return $this->belongsTo(Kandidat::class, 'idKandidat');
+    }
 }

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreKandidatRequest;
 use App\Http\Requests\UpdateKandidatRequest;
+use Session;
+use URL;
 
 class KandidatController extends Controller
 {
@@ -15,11 +17,14 @@ class KandidatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('pages.kandidat',[
-            'item' => DB::table('kandidats')->paginate(10),
-       ]);
+        if ($request->has('search')) {
+            $item = Kandidat::where('nama', 'LIKE', '%' .$request->search. '%')->paginate(5);
+        } else {
+            $item = Kandidat::paginate(5);
+        }
+        return view('pages.kandidat', compact('item'));
     }
 
     /**
@@ -78,20 +83,36 @@ class KandidatController extends Controller
      */
     public function edit($id)
     {
+        Session::put('requestReferrer', URL::previous());
         return view("pages.edit_kandidat",[
              'title' => 'User - Edit Kandidat',
              'item' => Kandidat::find($id),
          ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateKandidatRequest  $request
-     * @param  \App\Models\Kandidat  $kandidat
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
+    {
+        $validatedData=$request->validate([
+            'nama' => 'required',
+            'jenisKelamin' => 'required',
+            'alamat' => 'required|min:5',
+            'email' => 'required',
+            'noHp' => 'required',
+        ]);
+
+        $user = Kandidat::find($id);
+        $user->nama = $request->nama;
+        $user->jenisKelamin = $request->jenisKelamin;
+        $user->alamat = $request->alamat;
+        $user->email = $request->email;
+        $user->noHp = $request->noHp;
+        $user->save();
+
+        // return $this->index();
+        return redirect(Session::get('requestReferrer'));
+    }
+
+    public function save(Request $request, $id)
     {
         $validatedData=$request->validate([
             'nama' => 'required',
@@ -107,7 +128,7 @@ class KandidatController extends Controller
 
         $user = Kandidat::find($id);
         $user->nama = $request->nama;
-        $user->jenis_kelamin = $request->jenis_kelamin;
+        $user->jenisKelamin = $request->jenisKelamin;
         $user->alamat = $request->alamat;
         $user->email = $request->email;
         $user->noHp = $request->noHp;
@@ -117,7 +138,8 @@ class KandidatController extends Controller
         $user->interpersonal = $request->interpersonal;
         $user->save();
 
-        return redirect()->intended('/kandidat');
+        return redirect('pages.kandidat');
+        // return $this->index();
     }
 
     /**

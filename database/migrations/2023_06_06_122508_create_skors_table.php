@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('skors', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->text('idKandidat');
             $table->integer('komunikasi');
             $table->integer('kerjasama');
             $table->integer('kejujuran');

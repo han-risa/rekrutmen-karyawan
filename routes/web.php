@@ -15,6 +15,8 @@ use App\Http\Controllers\SkorController;
 |
 */
 
+Route::post('/kandidat/save/{id}', [KandidatController::class, 'update']);
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -38,8 +40,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
             return redirect('/skor');
         })->name('skor');
     });
-    Route::resource('/skor', SkorController::class);
-    Route::resource('/kandidat', KandidatController::class);
 });
-
-// Route::resource('/kandidat', KandidatController::class);
+Route::resource('/skor', SkorController::class);
+Route::resource('/kandidat', KandidatController::class);

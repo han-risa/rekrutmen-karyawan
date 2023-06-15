@@ -4,7 +4,7 @@
 <!-- Vendors -->
 <link rel="stylesheet" href="{{ asset('/vendors/perfect-scrollbar/perfect-scrollbar.css') }}">
 <link rel="stylesheet" href="{{ asset('/vendors/bootstrap-icons/bootstrap-icons.css') }}">
-
+<link rel="stylesheet" href="{{ asset('/public/css/pages/simple-datatables.scss') }}">
 
 <!-- Styles -->
 <link rel="stylesheet" href="{{ mix('css/bootstrap.css') }}">

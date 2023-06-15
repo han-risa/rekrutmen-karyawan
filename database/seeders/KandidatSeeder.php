@@ -20,7 +20,7 @@ class KandidatSeeder extends Seeder
         $gender = $faker->randomElement(['Laki-laki', 'Perempuan']);
 
     	for($i = 1; $i <= 20; $i++){
-
+            $id = $i;
     	      // insert data ke table pegawai menggunakan Faker
     		DB::table('kandidats')->insert([
     			'nama' => $faker->name,
@@ -28,12 +28,17 @@ class KandidatSeeder extends Seeder
                 'alamat' => $faker->address,
                 'noHp' => $faker->phoneNumber,
                 'email' => $faker->unique()->safeEmail,
+                'created_at' => $faker->date('Y-m-d', 'now')
+    		]);
+
+            DB::table('skors')->insert([
+                'idKandidat' => $id,
                 'komunikasi' => $faker->numberBetween(0,40),
     			'kerjasama' => $faker->numberBetween(0,40),
     			'kejujuran' => $faker->numberBetween(0,40),
     			'interpersonal' => $faker->numberBetween(0,40),
                 'created_at' => $faker->date('Y-m-d', 'now')
-    		]);
+            ]);
         }
     }
 }

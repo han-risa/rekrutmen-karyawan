@@ -14,9 +14,10 @@ class Kandidat extends Model
         'alamat',
         'email',
         'noHp',
-        'komunikasi',
-        'kerjasama',
-        'kejujuran',
-        'interpersonal'
     ];
+
+    public function skors()
+    {
+        return $this->hasOne(Skor::class, 'idKandidat', 'id');
+    }
 }

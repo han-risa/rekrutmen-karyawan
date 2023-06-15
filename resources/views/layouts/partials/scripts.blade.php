@@ -2,7 +2,7 @@
 
 <script src="{{ asset('/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
 <script src="{{ asset('/vendors/tinymce/tinymce.min.js') }}"></script>
-
+<script src="{{ asset('/public/js/pages/simple-datatables.js') }}"></script>
 
 <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
 

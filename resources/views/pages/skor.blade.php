@@ -8,7 +8,7 @@
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item active" aria-current="page">Kandidat</li>
+                        <li class="breadcrumb-item active" aria-current="page">Skor</li>
                     </ol>
                 </nav>
             </div>
@@ -23,18 +23,20 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Daftar Skor Kandidat
-                            <a href="/kandidat/create" class="btn btn-primary float-end btn-sm" style="margin-right: 10px">
-                                <button type="button" class="btn btn-primary"><i class="bi bi-plus-circle-fill" width="16" height="16"></i> Tambah</button>
-                            </a>
-                        </h4>
-
+                    </h4>
+                    <div class="col-sm-3">
+                        <form action="/skor" method="GET">
+                            <input type="search" class="form-control" name="search" placeholder="Search nama..">
+                        </form>
                     </div>
-                    <div class="card-content">
+                    </div>
+                    <div class="card-body">
                         <!-- table striped -->
                         <div class="table-responsive">
-                            <table class="table table-bordered mb-0" id="table1">
+                            <table class="table table-bordered" id="table1">
                                 <thead>
                                     <tr>
+                                        <th>No.</th>
                                         <th>Nama</th>
                                         <th>Komunikasi</th>
                                         <th>Kerjasama</th>
@@ -44,8 +46,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($item as $i)
+                                    @foreach ($item as $index => $i)
                                     <tr>
+                                        <td scope="row">{{ $index + $item->firstItem() }}</td>
                                         <td class="text-bold-500">{{ $i->nama }}</td>
                                         <td>{{ $i->komunikasi }}</td>
                                         <td>{{ $i->kerjasama }}</td>
@@ -56,17 +59,13 @@
                                                 <a type='button' href="/skor/{{ $i->id }}/edit" class="btn btn-warning btn-rounded btn-icon btn-sm">
                                                     <i class="bi bi-pencil-fill"></i>
                                                 </a>
-                                                @method("delete")
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger btn-rounded btn-icon btn-sm">
-                                                    <i class="bi bi-trash-fill"></i>
-                                                </button>
                                             </form>
                                         </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{ $item->links() }}
                         </div>
                     </div>
                 </div>
