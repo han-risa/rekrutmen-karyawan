@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kandidat;
+use App\Models\Skor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,9 +17,9 @@ class SkorController extends Controller
     public function index(Request $request)
     {
         if ($request->has('search')) {
-            $item = Kandidat::where('nama', 'LIKE', '%' .$request->search. '%')->paginate(5);
+            $item = Skor::with('kandidats')->where('nama', 'LIKE', '%' .$request->search. '%')->paginate(5);
         } else {
-            $item = Kandidat::paginate(5);
+            $item = Skor::with('kandidats')->paginate(5);
         }
         return view('pages.skor', compact('item'));
     }
@@ -76,7 +77,7 @@ class SkorController extends Controller
     {
         return view("pages.edit_skor",[
              'title' => 'User - Edit Kandidat',
-             'item' => Kandidat::find($id),
+             'item' => Skor::with('kandidats')->find($id),
          ]);
     }
 
@@ -96,7 +97,7 @@ class SkorController extends Controller
             'interpersonal' => 'required',
         ]);
 
-        $user = Kandidat::find($id);
+        $user = Skor::find($id);
         $user->komunikasi = $request->komunikasi;
         $user->kerjasama = $request->kerjasama;
         $user->kejujuran = $request->kejujuran;

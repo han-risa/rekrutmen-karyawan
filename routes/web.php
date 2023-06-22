@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KandidatController;
 use App\Http\Controllers\SkorController;
+use App\Http\Controllers\SeleksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +40,10 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
         Route::get('/skor', function () {
             return redirect('/skor');
         })->name('skor');
+        Route::get('/entropy', [SeleksiController::class, 'manualEntropy'] )->name('entropy');
+        Route::get('/ranking', [SeleksiController::class, 'deviation'] )->name('ranking');
     });
 });
+Route::get('/seleksi', [SeleksiController::class, 'deviation']);
 Route::resource('/skor', SkorController::class);
 Route::resource('/kandidat', KandidatController::class);

@@ -49,7 +49,7 @@
                                     @foreach ($item as $index => $i)
                                     <tr>
                                         <td scope="row">{{ $index + $item->firstItem() }}</td>
-                                        <td class="text-bold-500">{{ $i->nama }}</td>
+                                        <td class="text-bold-500">{{ $i->kandidats->nama }}</td>
                                         <td>{{ $i->komunikasi }}</td>
                                         <td>{{ $i->kerjasama }}</td>
                                         <td>{{ $i->kejujuran }}</td>

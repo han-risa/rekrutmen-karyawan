@@ -51,10 +51,6 @@ class KandidatController extends Controller
             'alamat' => 'required|min:5',
             'email' => 'required',
             'noHp' => 'required',
-            'komunikasi' => 'required',
-            'kerjasama' => 'required',
-            'kejujuran' => 'required',
-            'interpersonal' => 'required',
         ]);
 
 
@@ -87,6 +83,7 @@ class KandidatController extends Controller
         return view("pages.edit_kandidat",[
              'title' => 'User - Edit Kandidat',
              'item' => Kandidat::find($id),
+            //  'skor' => Skor::find($id)
          ]);
     }
 
@@ -110,36 +107,6 @@ class KandidatController extends Controller
 
         // return $this->index();
         return redirect(Session::get('requestReferrer'));
-    }
-
-    public function save(Request $request, $id)
-    {
-        $validatedData=$request->validate([
-            'nama' => 'required',
-            'jenisKelamin' => 'required',
-            'alamat' => 'required|min:5',
-            'email' => 'required',
-            'noHp' => 'required',
-            'komunikasi' => 'required',
-            'kerjasama' => 'required',
-            'kejujuran' => 'required',
-            'interpersonal' => 'required',
-        ]);
-
-        $user = Kandidat::find($id);
-        $user->nama = $request->nama;
-        $user->jenisKelamin = $request->jenisKelamin;
-        $user->alamat = $request->alamat;
-        $user->email = $request->email;
-        $user->noHp = $request->noHp;
-        $user->komunikasi = $request->komunikasi;
-        $user->kerjasama = $request->kerjasama;
-        $user->kejujuran = $request->kejujuran;
-        $user->interpersonal = $request->interpersonal;
-        $user->save();
-
-        return redirect('pages.kandidat');
-        // return $this->index();
     }
 
     /**

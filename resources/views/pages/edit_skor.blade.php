@@ -32,7 +32,7 @@
                                         <div class="form-group">
                                             <label for="first-name-vertical">Nama Lengkap</label>
                                             <input type="text" class="form-control" placeholder="Nama Lengkap"
-                                                name="nama" value="{{ $item->nama }}" disabled>
+                                                name="nama" value="{{ $item->kandidats->nama }}" disabled>
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -40,7 +40,7 @@
                                             <label for="mobile-id-vertical">Email</label>
                                             <div class="position-relative">
                                                 <input type="email" class="form-control" placeholder="Email"
-                                                    name="email" value="{{ $item->email }}" disabled>
+                                                    name="email" value="{{ $item->kandidats->email }}" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -49,7 +49,7 @@
                                             <label for="mobile-id-vertical">No. Handphone</label>
                                             <div class="position-relative">
                                                 <input type="text" class="form-control" placeholder="No. Handphone"
-                                                    name="noHp" value="{{ $item->noHp }}" disabled>
+                                                    name="noHp" value="{{ $item->kandidats->noHp }}" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -71,7 +71,7 @@
                                             <div class="form-group mb-3">
                                                 <label for="exampleFormControlTextarea1"
                                                     class="form-label">Alamat</label>
-                                                <textarea class="form-control" name="alamat" rows="3" disabled>{{ $item->alamat }}</textarea>
+                                                <textarea class="form-control" name="alamat" rows="3" disabled>{{ $item->kandidats->alamat }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-sm-3">

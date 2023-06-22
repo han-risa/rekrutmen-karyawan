@@ -74,7 +74,10 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{ $item->links() }}
+                            <ul class="pagination pagination-primary">
+                                {{ $item->links() }}
+                            </ul>
+                            {{-- {{ $item->links() }} --}}
                         </div>
                     </div>
                 </div>
