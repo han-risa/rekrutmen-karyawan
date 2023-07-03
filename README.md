@@ -1,7 +1,7 @@
 ## Installation
 1. Clone this project
     ```bash
-    git clone https://github.com/han-risa/rekrutmen-karyawan
+    git clone https://github.com/han-risa/rekrutmen-karyawan.git
     cd rekrutmen-karyawan
     ```
 2. Install dependencies
