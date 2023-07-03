@@ -2,13 +2,13 @@
     <x-slot name="header">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Entropy</h3>
+                <h3>Ranking</h3>
                 {{-- <p class="text-subtitle text-muted">This is the main page.</p> --}}
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item active" aria-current="page">Entropy</li>
+                        <li class="breadcrumb-item active" aria-current="page">Ranking</li>
                     </ol>
                 </nav>
             </div>
@@ -22,7 +22,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Normalisasi</h4>
+                        <h4 class="card-title">Ranking Akhir</h4>
                     </div>
                     <div class="card-body">
                         <!-- table striped -->

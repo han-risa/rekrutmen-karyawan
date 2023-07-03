@@ -136,8 +136,8 @@ class SeleksiController extends Controller
         $posFlow = array();
         $negFlow = array();
         for($i = 0; $i < $itemRow; $i++) {
-            $posFlow[$i] = (1 / 9) * $y[$i];
-            $negFlow[$i] = (1 / 9) * $z[$i];
+            $posFlow[$i] = (1 / ($itemRow-1)) * $y[$i];
+            $negFlow[$i] = (1 / ($itemRow-1)) * $z[$i];
             $netFlow[$i] = $posFlow[$i] - $negFlow[$i];
         }
         $result = array($nama, $posFlow, $negFlow, $netFlow);
